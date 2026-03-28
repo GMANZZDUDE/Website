@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A small night sky you can touch." />
+    <title>Drift — a night sky</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <canvas id="sky" aria-hidden="true"></canvas>
+    <div class="vignette" aria-hidden="true"></div>
+    <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+    <header class="sky-bar">
+      <span class="sky-bar__label">Local</span>
+      <time class="sky-bar__time" id="clock" datetime="">—:—</time>
+      <span class="sky-bar__dot" aria-hidden="true">·</span>
+      <span class="sky-bar__moon" id="moonLabel" title="Approximate lunar phase">Moon</span>
+    </header>
+
+    <main class="stage">
+      <p class="eyebrow">You found a quiet corner of the internet</p>
+      <h1 class="title">
+        <span class="title-line">Everything above you</span>
+        <span class="title-line title-line--accent">is already ancient light.</span>
+      </h1>
+      <p class="lede">
+        Move the cursor. Click to ripple the dark. Your last few clicks can thread together. Press
+        <kbd class="kbd">N</kbd> for field notes—or wait, and let the sky speak first.
+      </p>
+    </main>
+
+    <aside class="hud" aria-live="polite">
+      <span class="hud-coords" id="coords">— · —</span>
+      <div class="hud-actions">
+        <button type="button" class="hud-btn" id="openNotes">Field notes</button>
+        <button type="button" class="hud-btn hud-btn--toggle" id="toggleThreads" aria-pressed="false">
+          Threads off
+        </button>
+        <button type="button" class="hud-btn hud-btn--toggle" id="toggleMotion" aria-pressed="false">
+          Calm mode
+        </button>
+      </div>
+    </aside>
+
+    <p class="whisper" id="whisper" hidden></p>
+
+    <dialog class="notes" id="notesDialog" aria-labelledby="notesTitle">
+      <div class="notes__inner">
+        <header class="notes__head">
+          <h2 class="notes__title" id="notesTitle">Field notes</h2>
+          <button type="button" class="notes__close" id="closeNotes" aria-label="Close field notes">
+            Close
+          </button>
+        </header>
+        <div class="notes__body">
+          <section class="notes__section">
+            <h3>Instruments</h3>
+            <ul class="notes__list">
+              <li><strong>Threads</strong> draws faint lines between your last eight clicks—temporary constellations of your own making.</li>
+              <li><strong>Calm mode</strong> stills parallax, meteors, and nebula drift. Whispers pause until you return.</li>
+              <li>Type <kbd class="kbd">drift</kbd> in order (anywhere, no input focused) for a meteor shower.</li>
+            </ul>
+          </section>
+          <section class="notes__section">
+            <h3>Odd truths</h3>
+            <ul class="notes__list notes__list--facts">
+              <li>Sunlight reaches Earth in about eight minutes. The Milky Way’s center is roughly 26,000 light-years away—so that light began before recorded history.</li>
+              <li>Many “stars” are binaries or whole crowds; our single Sun is almost lonely by comparison.</li>
+              <li>The sky you see is a slice through time: nearby stars are nearly “now,” distant ones are deep postcards.</li>
+              <li>Meteors glow from air compressed ahead of a grain of dust—not from friction alone.</li>
+            </ul>
+          </section>
+          <section class="notes__section">
+            <h3>Afterimage</h3>
+            <p class="notes__prose">
+              This page is a toy observatory: no tracking, no accounts—just canvas, type, and a little theatre. If it helped you exhale, that was the point.
+            </p>
+          </section>
+        </div>
+      </div>
+    </dialog>
+
+    <script src="script.js"></script>
+  </body>
+</html>
